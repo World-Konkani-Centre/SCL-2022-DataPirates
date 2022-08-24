@@ -69,13 +69,13 @@ a:hover {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-body {
+/* body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
   background-color: #eee;
-}
+} */
 
 /* .content {
   display: flex;
@@ -1885,8 +1885,8 @@ section {
 
 .card-html .card-header,
 .card-html .btn-success {
-  background-color: #e65127;
-  border-color: #e65127;
+  background-color: var(--orange);
+  border-color: var(--orangel);
 }
 
 .card-js .card-header,
@@ -1932,7 +1932,7 @@ section {
 
 .board{
   color: var(--white);
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .main {

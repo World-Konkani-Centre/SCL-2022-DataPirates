@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include('post.urls')),
     path('', include('user.urls')),
     path('user/info/<int:pk>/', user_views.userInfo, name='user-info'),
-    path("user/follow/<int:id>/",user_views.follow, name="follow"),
+    path('user/follow/<int:id>/',user_views.follow, name="follow"),
 ]
 
 if settings.DEBUG:

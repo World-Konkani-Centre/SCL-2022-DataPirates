@@ -15,14 +15,14 @@
                 </li>
                 <li class="nav-item my-1">
                     <a href="{% url 'stars' %}" class="nav-link text-dark  bg-light">
-                        <i class="fa fa-star-o mr-3  "></i>
+                        <i class="fa fa-star mr-3  "></i>
                         Starred Posts
                     </a>
                 </li>
                 <li class="nav-item my-1">
                     <a href="../user/info/{{user.id}}" class="nav-link text-dark bg-light">
-                        <i class="fa fa-user-circle-o mr-3  "></i>
-                        View Profile
+                        <i class="fa fa-user mr-3  "></i>
+                        View Profile {{user.id}}
                     </a>
                 </li>
             </ul>

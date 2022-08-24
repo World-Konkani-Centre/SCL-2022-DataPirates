@@ -35,7 +35,7 @@ def flowchart(request):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post/landing.html'
+    template_name = 'post/home.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
@@ -45,21 +45,17 @@ class PostListView(ListView):
         context['categories_list'] = Category.objects.all()
         return context
 
+@login_required
 def following_posts(request):
     posts=Post.objects.all()
     categories_list = Category.objects.all()
     following_profiles=Profile.objects.get(user=request.user).following.all()
-    '''
-    following_posts=[]
-    for post in posts:
-        if post.author.profile in following_profiles:
-            following_posts.add(post.id)
-    print(following_posts)
-    '''
+    starred_posts = Star.objects.get(user=request.user).posts.all()
     context = {
         'posts':posts,
         'following_profiles': following_profiles,
-        'categories_list':categories_list
+        'categories_list':categories_list,
+        'starred_posts':starred_posts
         }
     return render(request, 'post/home.html', context)
 
@@ -74,7 +70,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin,DetailView):
     model = Post
     template_name = 'post/post_detail.html'
 
@@ -186,7 +182,7 @@ def star(request, pk):
         messages.success(request, f'Post added to Starred Posts List!')
     post.stars_count = current_stars
     post.save()
-    return redirect('post-detail', pk=pk)
+    return redirect('user-home')
 
 
 @login_required
@@ -198,16 +194,22 @@ def starlist(request):
 def categoryList(request, slug):
     category = Category.objects.get(slug=slug)
     category_posts = Post.objects.filter(category=category)
-    return render(request, "post/categories.html", {'category_posts': category_posts})
-
-'''
-def landing(request):
-    posts = Post.objects.all()
-    context = {'posts': posts}
-    return render(request, 'post/landing.html', context)
-'''
+    context={
+        'category_posts': category_posts,
+        'category':category
+            }
+    return render(request, "post/categories.html",context)
 
 def explore(request):
     posts = Post.objects.all()
     context = {'posts': posts}
     return render(request, 'post/explore.html',context)
+
+def landing(request):
+    
+    return render(request, 'post/landing.html')
+
+# def lside(request):
+#     user = request.user
+#     context={'users':user}
+#     return render(request, 'includes/subpages/left_sidebar.html',context)

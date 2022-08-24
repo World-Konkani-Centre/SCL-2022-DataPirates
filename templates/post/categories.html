@@ -1,162 +1,39 @@
+
+
 {% extends "base.html" %}
-{%load crispy_forms_tags%}
+
 {% block content%}
-<h1>Category</h1>
-{% for post in category_posts %}
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
-
-    /* Design */
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
 
 
-    .card {
-        border: none;
-        border-radius: 10px
-    }
 
-    .c-details span {
-        font-weight: 300;
-        font-size: 13px
-    }
+<div class="py-3">
+   <h1 class="board d-flex justify-content-center">Category: {{category}}</h1>
+   <!-- <h3 class="blue">With Headers</h3> -->
+</div>
 
-    .icon {
-        width: 50px;
-        height: 50px;
-        background-color: rgb(49, 49, 49) !important;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 39px
-    }
-
-    /* .badge span {
-    background-color: #fffbec;
-    width: 60px;
-    height: 25px;
-    padding-bottom: 3px;
-    border-radius: 5px;
-    display: flex;
-    color: #8df162;
-    justify-content: center;
-    align-items: center
-} */
-
-    /* .progress {
-    height: 10px;
-    border-radius: 10px
-}
-
-.progress div {
-    background-color: red
-} */
-
-    .text1 {
-        font-size: 14px;
-        font-weight: 600
-    }
-
-    .text2 {
-        color: #a5aec0
-    }
-
+<div class="d-flex justify-content-center container my-4">
+   <div class="col-xl-3">
+      {% include 'includes/subpages/left_sidebar.html' %}
+   </div>
+   <!-- center card  -->
+   <div class="col-xl-6">
+      
+    {% for post in category_posts %}
+    <!-- <div class="row d-flex justify-content-center">
+      <div class="col-md-6 "> -->
+        {% include 'includes/subpages/card_home.html' %}
+      <!-- </div>
+    </div> -->
     
-
-
-    .button {
-        padding: .70rem;
-        width: 140px;
-        height: 45px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-        font-weight: 500;
-        color: #000;
-        background-color: #fff;
-        border: none;
-        border-radius: 45px;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease 0s;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .button:hover {
-        background-color: #2EE59D;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-        color: #fff;
-        transform: translateY(-7px);
-    }
-</style>
-<div class="d-flex justify-content-center my-3 myDiv">
-
-    <!-- <div class="main col-6">
-
-    <div class="card1">
-      <div class="card_content">
-        <center><a class="text" href="post/{{ post.id }}">{{ post.title }}</a><br>
-          <small class="card_text">{{ post.topic.name }}</small><br>
-          <a class="mr-2" href="#">By {{post.author }}</a>
-          <small class="text2">on {{ post.date_posted|date:"F d,Y"}}</small>
-        </center>
-        <a class="new" href="post/{{ post.id }}"><button class="btn1">Detailed Roadmap</button></a>
-      </div>
-    </div>
-
-  </div> -->
-
-    <div class="d-flex justify-content-center ">
-        <div class="main col-6">
-
-
-
-            <div class="card p-3 my-2 ">
-                <img src="https://images.unsplash.com/photo-1660092508077-5ed788afa17c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                    class="card-img-top" alt="...">
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex flex-row align-items-center">
-                        <div class="icon"><img class="thumbnail" src="{{post.author.profile.image.url}}" alt=""> </div>
-                        <div class="ms-2 c-details">
-                            <h6 class="mb-0">{{ post.author }}</h6> 
-                            <span>
-                                <small class="text2">on {{post.date_posted|date:"Fd,Y"}}</small>
-                                <small>...{{post.category.title}}</small>
-                            </span>
-                        </div>
-                    </div>
-                    <span class="badge badge-primary"> <span>Design</span> </span>
-                </div>
-                <div class="my-2">
-                    <a class="text">
-                        <h3 class="heading align-items-center d-flex justify-content-center">{{ post.title }}</h3>
-                    </a>
-                    <div class="mt-3 text-center ">
-
-                        <a class="button" href="../../post/{{ post.id }}">learn more<span></span></a>
-
-                        <!-- <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div> -->
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-        <div class="main col-3">
-            #right sidebar
-
-        </div>
-    </div>
+    
+    
+    {% endfor %}
+   </div>
+   <div class="col-xl-3">
+      {% include 'includes/subpages/right_sidebar.html' %}
+   </div>
 
 
 </div>
 
-
-{% endfor %}
 {%endblock content%}

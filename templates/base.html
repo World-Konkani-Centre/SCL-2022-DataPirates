@@ -1,16 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en">  
 <head>
     <link rel="icon" type="image/x-icon" href="/media/favicon1.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Alertify Js CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-    <!-- Alertify Js Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
     <script src="/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
     <script src="/static/ckeditor/ckeditor/ckeditor.js"></script>
 
@@ -28,31 +24,113 @@
     {% else %}
     <title>WalkThrough</title>
     {% endif %}
-    {% block custom_css %}{% endblock %}
+    {% block custom_css %}
+    <style>
+      .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #242f3f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+       .loader {
+         display: inline-block;
+         width: 30px;
+         height: 30px;
+         position: relative;
+         border: 4px solid #Fff;
+         animation: loader 20s infinite ease;
+       }
+      
+       .loader-inner {
+         vertical-align: top;
+         display: inline-block;
+         width: 100%;
+         background-color: #fff;
+         animation: loader-inner 20s infinite ease-in;
+       }
+      
+       @keyframes loader {
+         0% {
+           transform: rotate(0deg);
+         }
+      
+         25% {
+           transform: rotate(180deg);
+         }
+      
+         50% {
+           transform: rotate(180deg);
+         }
+      
+         75% {
+           transform: rotate(360deg);
+         }
+      
+         100% {
+           transform: rotate(360deg);
+         }
+       }
+      
+       @keyframes loader-inner {
+         0% {
+           height: 0%;
+         }
+      
+         25% {
+           height: 0%;
+         }
+      
+         50% {
+           height: 100%;
+         }
+      
+         75% {
+           height: 100%;
+         }
+      
+         100% {
+           height: 0%;
+         }
+       }
+          </style>
+    {% endblock %}
 
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="padding-top: 100px;">
     {% include 'includes/navbar.html' %}
 
-    {% block content %}
+<class = "d-flex flex-column min-vh-100">
 
-    {% endblock %}
-
-    {% include 'includes/style.html' %}
-    {% include 'includes/footer.html' %}
-
-    {% block custom_js %}{% endblock %}
-    {% include 'includes/notification.html' %}
-
+    <body class="d-flex flex-column min-vh-100">
+        {% include 'includes/navbar.html' %}
+    
+        {% block content %}
+        
+        {% endblock %}
+        <div class="loader-wrapper">
+          <span class="loader"><span class="loader-inner"></span></span>
+        </div>
+        {% include 'includes/style.html' %}
+        {% include 'includes/footer.html' %}
+    
+        {% block custom_js %}{% endblock %}
+        {% include 'includes/notification.html' %}
     <script>
+      $(window).on("load", function () {
+              $(".loader-wrapper").fadeOut("slow");
+          });
         {% if messages %}
         {% for message in messages %}
         alertify.set('notifier', 'position', 'top-right');
         alertify.success('{{ message }}');
         {% endfor %}
         {% endif %}
-    </script>
+      </script>
 </body>
-
 </html>

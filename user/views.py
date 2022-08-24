@@ -55,6 +55,7 @@ def userInfo(request,pk):
     profile=Profile.objects.get(user=user)
     posts=Post.objects.filter(author=user)
     context={
+        'user':user,
         'profile':profile,
         'posts':posts
         }

@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+<div class=" py-3">
+    <h1 class="board d-flex justify-content-center">Explore</h1>
+    <div class="col-12 d-flex justify-content-center mx-auto">
+        <span class=" btn bg-light my-1">
+          <a href="{% url 'post-create' %}" class="">
+                    <i class="fa fa-edit mr-3  "></i>
+                    Create Your Post
+                </a>
+        </span>
+        
+    </div>
+ </div>
 <div class="container mt-3 mb-3" style="border-radius: 15px;">
     <div class="container">
         <div class="row">

@@ -29,6 +29,7 @@
             <div class="stats">
                 <a href="{% url 'post-detail' post.id %}" class="btn btn-info">View More</a>
             </div>
+            {% if user.is_authenticated %}
             <div class="my-auto">
                 {% if post.stars_count == 0 %}
                 <a href="{% url 'postStar' post.id %}">Star<i class="far fa-star"></i></a>
@@ -36,6 +37,7 @@
                 <a href="{% url 'postStar' post.id %}">Unstar<i class="fa fas fa-star"></i></a>
                 {% endif %}
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

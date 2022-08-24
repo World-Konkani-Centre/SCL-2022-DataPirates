@@ -8,6 +8,7 @@ from post.models import Post
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #about=models.TextField(max_length=200)
     image = models.ImageField("Profile picture",default='default.jpg', upload_to='profile_pics')
     name = models.CharField(max_length=50, null=True, blank=True)
     profession = models.CharField(max_length=50,null=True, blank=True)
