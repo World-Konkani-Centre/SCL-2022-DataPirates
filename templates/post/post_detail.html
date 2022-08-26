@@ -57,15 +57,17 @@
     position: sticky;
     top: 0;
   }
+
+ 
 </style>
 
-<div class="container my-4" data-aos="fade-up">
+<div class="container my-4">
   <div class="d-flex justify-content-center px-1">
     <div class="col-4 mx-1 mb-1">
       <div class="sticky bg-transparent">
         {% if object.author == user %}
-        <div class="" >
-          <div class="card-body rounded mb-2 card" data-aos="fade-up">
+        <div class="">
+          <div class="card-body rounded mb-2 card">
             <div class="text-center">
               <h3>Actions</h3>
 
@@ -88,7 +90,7 @@
           </div>
         </div>
         {% endif %}
-        <div class="card-body sticky2 rounded card" data-aos="fade-up">
+        <div class="card-body sticky2 rounded card">
           <div class="text-center">
             <h3>Categories</h3>
             {% if not post.subposts.all%}
@@ -111,7 +113,7 @@
       <div class="mx-auto">
         <div class="card">
           <img class="card-img card-img-top img-fluid" src="{{ post.image.url }}" alt="Bologna">
-          <div class="card-body" data-aos="fade-up">
+          <div class="card-body">
             <h1 class="card-title my-2">{{post.title}}</h1>
             <div class="d-flex justify-content-start my-2">
               <div class="me-5">
@@ -127,7 +129,9 @@
             <p class="card-text">{{object.content | safe}}</p>
           </div>
         </div>
+        
         {% include 'includes/subpages/subposts.html' %}
+        
       </div>
     </div>
   </div>
@@ -156,6 +160,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
