@@ -14,11 +14,15 @@
     </div>
  </div>
 <div class="container mt-3 mb-3" style="border-radius: 15px;">
+    {% if posts.count == 0 %}
+    <h3 class="board text-center">No posts to show.</h3>
+    {% else%}
     <div class="container">
         <div class="row">
             {% include 'post/gallery.html' %}
         </div>
     </div>
+    {%endif%}
 </div>
 
 
