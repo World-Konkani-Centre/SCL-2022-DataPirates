@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 import django_heroku
 import dj_database_url
+from whitenoise.django import DjangoWhiteNoise
+application = DjangoWhiteNoise(application)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +31,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://walkthrough-datapirates.herokuapp.com","walkthrough-datapirates.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ["https://walkthrough-datapirates.herokuapp.com","walkthrough-datapirates.herokuapp.com","*"]
 
 CSRF_TRUSTED_ORIGINS = ["https://walkthrough-datapirates.herokuapp.com"]
 # Application definition
@@ -49,7 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
