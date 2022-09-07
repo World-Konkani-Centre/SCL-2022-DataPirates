@@ -35,28 +35,24 @@ color: #ff173c; }
 border-bottom: 0; }
 </style>
 <div class="rounded sticky">
-    <div class="card-body">
+    <div class="card">
 
-        <div class="list-group">
             <div class="single category">
                 <p class="text-center">
                 <h3 class="side-title">Category</h3>
                 </p>
                 <ul class="list-unstyled">
-        {% for category in categories_list %}
-
-                    <li><a href="{% url 'category' category.slug %}" title="{{category.title}}">{{category.title}}<span class="pull-right">{{category.count}}</span></a></li>
+                    {% for category in categories_list %}
+                    <li><a href="{% url 'category' category.slug %}" title="{{category.title}}">{{category.title}}</a></li>
                     {% endfor %}
                 </ul>
            </div>
-          
-
-        </div>
+      
       
     </div>
 
-    <div class="card-body">
-        <div class="list-group">
+    <div class="card">
+
             <div class="single category">
                 <p class="text-center">
                 <h3 class="side-title">More Posts</h3>
@@ -69,9 +65,7 @@ border-bottom: 0; }
                     {% endfor %}
                 </ul>
            </div>
-          
-
-        </div>
+   
         
     </div>
 </div>
