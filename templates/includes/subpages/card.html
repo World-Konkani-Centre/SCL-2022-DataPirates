@@ -13,10 +13,10 @@
         </div>
         {% endif %}
         <div class="card-body">
-            <a href="{% url 'post-detail' post.id %}"><h4 class="card-title">{{post.title}}</h4></a>
+            <h4 class="card-title">{{post.title}}</h4>
             <div class="d-flex justify-content-start my-2">
                 <div class="me-3">
-                    <i class="bx bxs-user"></i><a href="{% url 'user-info' post.author.profile.id %}"><small>{{post.author}}</small></a>
+                    <i class="bx bxs-user"></i><a href="{% url 'user-info' post.id %}"><small>{{post.author}}</small></a>
                 </div>
                 <div class="me-5">
                     <i class="bx bx-time"></i><small>{{ post.date_posted|date:"F d, Y" }}</small>
@@ -29,15 +29,13 @@
             <div class="stats">
                 <a href="{% url 'post-detail' post.id %}" class="btn btn-info">View More</a>
             </div>
-            {% if user.is_authenticated %}
             <div class="my-auto">
-                {% if post not in starred_posts %}
+                {% if post.stars_count == 0 %}
                 <a href="{% url 'postStar' post.id %}">Star<i class="far fa-star"></i></a>
                 {% else %}
                 <a href="{% url 'postStar' post.id %}">Unstar<i class="fa fas fa-star"></i></a>
                 {% endif %}
             </div>
-            {% endif %}
         </div>
     </div>
 </div>

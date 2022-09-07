@@ -2,33 +2,32 @@
 
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-        <h1 class="logo me-5"><a href="{% url 'explore' %}"><span>Walk</span><span class="navspan">Through</span></a></h1>
+        <h1 class="logo me-5"><a href="{% url 'user-home' %}"><span>Walk</span><span class="navspan">Through</span></a></h1>
         <div class="col-xl-6 ms-1">
             <form method="GET" action="{% url 'search' %}" class="search-bar">
                 <input class="input" type="search" placeholder="What are you looking for today?" aria-label="Search" name="query" id="query">
                 <button class="button" type="submit"><i class="fa fa-search text-white"></i></button>
             </form>
         </div>
-        <nav class="navbar navbar-expand-lg" style="padding: 0px;">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid ms-5">
                 <div class="collapse navbar-collapse" id="">
                     <ul>
                         <li><a class="nav-link scrollto" href="{% url 'explore' %}">Explore</a></li>
-                        
+                        <li><a class="nav-link scrollto" href="{% url 'user-login-about' %}"">Our Story</a></li>
                         {% if user.is_authenticated %}
-                        <li><a class="nav-link scrollto" href="{% url 'user-home' %}">Home</a></li>
-
-                        <li class=" dropdown nav-link scrollto"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class=" dropdown"><a href="{% url 'profile' %}"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
                                 <ul>
-                                    <li><a href="{% url 'profile' %}">Edit Profile</a></li>
-
+                                    <li><a href="{% url 'post-create' %}">Create Post</a></li>
+                                    <li><a href="{% url 'stars' %}">Starred Posts</a></li>
                                     <li><a href="{% url 'logout' %}">Logout</a></li>
                                     {% else %}
-                                
-                                    <li><a class="nav-link scrollto" href="{% url 'register' %}">Register</a></li>
-                                 <li><a class="btn btn-primary nav-link scrollto"href="{% url 'login' %}">Login</a></li>
+                                    <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="{% url 'register' %}">Register</a></li>
+                                            <li><a href="{% url 'login' %}">Login</a></li>
                                             {% endif %}
-                                      
+                                        </ul>
                                     </li>
                                 </ul>
                         </li>

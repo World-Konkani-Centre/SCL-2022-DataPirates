@@ -31,7 +31,7 @@
             <p class="card-text">{{post.content|safe|truncatechars:200}}</p>
         </div>
         <div class="card-footer">
-            {% if post not in starred_posts %}
+            {% if post.stars_count == 0 %}
             <a href="{% url 'postStar' post.id %}">
                 <span id="boot-icon" class="bi bi-star" style="font-size:20px;">
                     <span>

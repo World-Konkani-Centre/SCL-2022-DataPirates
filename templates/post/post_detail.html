@@ -89,10 +89,10 @@
         </div>
         {% endif %}
         <div class="card-body sticky2 rounded card" data-aos="fade-up">
-          <div class="pl-5">
-            <h3>Contents</h3>
+          <div class="text-center">
+            <h3>Categories</h3>
             {% if not post.subposts.all%}
-            <div class="card py-2">
+            <div class="card text-center py-2">
               <h4>
                 No SubPosts yet.
               </h4>
@@ -100,7 +100,7 @@
             {% endif %}
             <ol>
               {%for subpost in post.subposts.all%}
-              <li class="text-start"><a href="../../post/{{post.id}}/#{{subpost.id}}">{{subpost.title}}</a></li>
+              <li class="text-left"><a href="../../post/{{post.id}}/#{{subpost.id}}">{{subpost.title}}</a></li>
               {% endfor %}
             </ol>
           </div>

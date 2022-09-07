@@ -1,71 +1,23 @@
 <style>
-    .single {
-padding: 15px 15px;
-
-background: #fcfcfc;
-border: 1px solid #f0f0f0; }
-.single h3.side-title {
-margin: 0;
-margin-bottom: 10px;
-padding: 0;
-font-size: 20px;
-color: #333;
-text-transform: uppercase; }
-.single h3.side-title:after {
-content: '';
-width: 60px;
-height: 1px;
-background: #ff173c;
-display: block;
-margin-top: 6px; }
-
-.single ul {
-margin-bottom: 0; }
-.single li a {
-color: #666;
-font-size: 14px;
-text-transform: uppercase;
-border-bottom: 1px solid #f0f0f0;
-line-height: 40px;
-display: block;
-text-decoration: none; }
-.single li a:hover {
-color: #ff173c; }
-.single li:last-child a {
-border-bottom: 0; }
+    .sticky {
+        position: sticky;
+        top: 90px;
+        background: #ffffff;
+    }
 </style>
+
 <div class="rounded sticky">
-    <div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <p class="text-center">
+            <h3>Categories</h3>
+            </p>
+        </div>
+        {% for category in categories_list %}
+        <div class="list-group">
+            <a href="{% url 'category' category.slug %}" class="btn btn-info my-1 rounded-pill opacity-100">{{category.title}}</a>
 
-            <div class="single category">
-                <p class="text-center">
-                <h3 class="side-title">Category</h3>
-                </p>
-                <ul class="list-unstyled">
-                    {% for category in categories_list %}
-                    <li><a href="{% url 'category' category.slug %}" title="{{category.title}}">{{category.title}}</a></li>
-                    {% endfor %}
-                </ul>
-           </div>
-      
-      
-    </div>
-
-    <div class="card">
-
-            <div class="single category">
-                <p class="text-center">
-                <h3 class="side-title">More Posts</h3>
-                </p>
-                <ul class="list-unstyled">
-                    {% for post in posts|slice:":5" %}
-
-
-                    <li><a href="{% url 'post-detail' post.id %}" class="my-1  opacity-100">{{post.title}}</a></li>
-                    {% endfor %}
-                </ul>
-           </div>
-   
-        
+        </div>
+        {% endfor %}
     </div>
 </div>
