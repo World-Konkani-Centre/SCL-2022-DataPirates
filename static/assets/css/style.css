@@ -69,13 +69,13 @@ a:hover {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-/* body {
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
   background-color: #eee;
-} */
+}
 
 /* .content {
   display: flex;
@@ -180,7 +180,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 10px 0 10px 30px; */
+  padding: 10px 0 10px 30px;
   font-size: 15px;
   font-weight: 500;
   color: #fff;
@@ -1885,8 +1885,8 @@ section {
 
 .card-html .card-header,
 .card-html .btn-success {
-  background-color: var(--orange);
-  border-color: var(--orangel);
+  background-color: #e65127;
+  border-color: #e65127;
 }
 
 .card-js .card-header,
@@ -1932,7 +1932,7 @@ section {
 
 .board{
   color: var(--white);
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .main {
@@ -2024,25 +2024,3 @@ section {
 .django-ckeditor-widget {
   width: 100%;
 }
-
-  .modal-backdrop {
-    z-index: -1;
-  }
-
-  .modal-open {
-    overflow: visible;
-  }
-
-
-    .single li a {
-    color: #666;
-    font-size: 14px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #f0f0f0;
-    line-height: 40px;
-    display: block;
-    text-decoration: none; }
-    .single li a:hover {
-    color: #ff173c; }
-    .single li:last-child a {
-    border-bottom: 0; }
