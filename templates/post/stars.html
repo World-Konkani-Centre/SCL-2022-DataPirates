@@ -14,9 +14,12 @@
       {% include 'includes/subpages/left_sidebar.html' %}
    </div>
    <!-- center card  -->
-   <div class="col-xl-6" data-aos="fade-up">
+   <div class="col-xl-6" >
       
     {% for post in star_list.posts.all %}
+    {%if post.count == 0 %}
+    <h3 class="board text-center">No feeds to show. <span><h4>follow to get more post</h4></span></h3>
+    {%endif%}
     <!-- <div class="row d-flex justify-content-center">
       <div class="col-md-6 "> -->
         {% include 'includes/subpages/card_home.html' %}
